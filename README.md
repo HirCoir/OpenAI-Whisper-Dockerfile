@@ -23,6 +23,16 @@ Para desplegarlo necesitas tener Docker y git instalado.
 
 `docker run -d --name=whisper-vscode --restart=always -e PASSWORD=Pass123 -p 8080:8080 hircoir/whisper-vscode:arm64`
 
+## Usar Whisper en Google Cloud Shell (Es gratis):
+**Desplegar usando:**
+
+`docker run -d --name=whisper-vscode --restart=always -e PASSWORD=Pass123 -p 8080:8080 hircoir/whisper-vscode:amd64`
+
+
+**Al desplegarlo necesitas tener una cuenta de Ngrok para poder obtener un token y crear un tunel para poder acceder a la versión web:**
+[Ngrok]([https://github.com/openai/whisper](https://dashboard.ngrok.com/get-started/setup))
+
+`wget https://raw.githubusercontent.com/HirCoir/OpenAI-Whisper-Dockerfile/main/ngrok-tunnel; chmod 777 ngrok-tunnel; bash ngrok-tunnel`
 
 Para usar Whisper solo abra la carpeta ROOT en VSCODE-WEB y arrastre directamente su archivo, abra un terminal y escriba el comando "menu" para mostrar las opciones... Tenga en cuenta que es un menú básico, recomiendo leer la [Documentación de Whisper.](https://github.com/openai/whisper)
 ![](https://github.com/HirCoir/OpenAI-Whisper-Dockerfile/raw/main/images/whisper1.PNG)
