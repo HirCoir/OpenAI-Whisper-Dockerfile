@@ -1,0 +1,103 @@
+#!/bin/bash
+
+# Función para imprimir el menú de opciones
+function print_menu {
+  clear
+  echo "===================="
+  echo "  MENÚ PRINCIPAL"
+  echo "===================="
+  echo ""
+  echo "Selecciona una opción:"
+  echo "1. Transcribir audio"
+  echo "2. Traducir audio"
+  echo "3. Información del creador"
+  echo "4. Salir"
+}
+
+# Función para transcribir audio
+function transcribe_audio {
+  clear
+  echo "===================="
+  echo "  TRANSCRIBIR AUDIO"
+  echo "===================="
+  echo ""
+  echo "Introduce la ruta al archivo de audio:"
+  read audio_path
+  if test -f "$audio_path"; then
+    echo "Transcribiendo audio..."
+    whisper --task transcribe "$audio_path"  --output_dir /root/whisper-file-out
+    echo ""
+    echo "Proceso terminado"
+  else
+    echo "El archivo no existe o no se puede acceder."
+  fi
+  echo ""
+  echo "Presiona enter para continuar"
+  read
+}
+
+# Función para traducir audio
+function translate_audio {
+  clear
+  echo "===================="
+  echo "  TRADUCIR AUDIO    "
+  echo "===================="
+  echo ""
+  echo "Introduce la ruta al archivo de audio:"
+  read audio_path
+  if test -f "$audio_path"; then
+    echo "Introduce el idioma al que deseas traducir el audio (ej: en, es, fr):"
+    read target_language
+    echo "Traduciendo audio..."
+    whisper --task translate --language "$target_language" "$audio_path" --output_dir /root/wishper-file-out
+    echo ""
+    echo "Proceso terminado"
+  else
+    echo "El archivo no existe o no se puede acceder."
+  fi
+  echo ""
+  echo "Presiona enter para continuar"
+  read
+}
+
+# Función para mostrar información del creador
+function show_creator_info {
+  clear
+  echo "========================="
+  echo " INFORMACIÓN DEL CREADO "
+  echo "========================="
+  echo ""
+  echo "Este script fue creado por Hircoir."
+  echo "Puedes encontrar más información sobre el creador en su perfil de GitHub:"
+  echo "https://github.com/hircoir"
+  echo ""
+  echo "Presiona enter para continuar"
+  read
+}
+
+# Ciclo infinito para mostrar el menú de opciones y ejecutar la opción seleccionada
+while true
+do
+  print_menu
+  read option
+
+  case $option in
+    1)
+      transcribe_audio
+      ;;
+    2)
+      translate_audio
+      ;;
+    3)
+      show_creator_info
+      ;;
+    4)
+      clear
+      echo "¡Hasta luego!"
+      exit
+      ;;
+    *)
+      echo "Opción no válida"
+      ;;
+  esac
+done
