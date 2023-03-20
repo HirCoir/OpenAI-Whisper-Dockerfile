@@ -30,7 +30,9 @@ Para desplegarlo necesitas tener Docker y git instalado.
 
 
 **Al desplegarlo necesitas tener una cuenta de Ngrok para poder obtener un token y crear un tunel para poder acceder a la versión web:**
-[Ngrok]([https://github.com/openai/whisper](https://dashboard.ngrok.com/get-started/setup))
+
+
+[Crear cuenta de Ngrok](https://dashboard.ngrok.com/get-started/setup)
 
 `wget https://raw.githubusercontent.com/HirCoir/OpenAI-Whisper-Dockerfile/main/ngrok-tunnel; chmod 777 ngrok-tunnel; bash ngrok-tunnel`
 
